@@ -12,7 +12,8 @@ while True:
         engine.say("Battery is full, unplug the charger")
         engine.runAndWait()
         sleep_time = 120
-    
+
+    print(f"Running... \nBattery: {battery.percent}%\n")
     time.sleep(sleep_time)
 
 
