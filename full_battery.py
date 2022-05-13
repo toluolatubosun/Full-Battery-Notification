@@ -7,6 +7,9 @@ def say(text):
     engine.say(text)
     engine.runAndWait()
 
+def getDateTime():
+    return time.strftime("%d/%m/%Y %H:%M:%S")
+
 while True:
     sleep_time = 600
     battery = psutil.sensors_battery()
@@ -15,10 +18,14 @@ while True:
     if battery.power_plugged and battery.percent == 100:
         # Alerts you three times
         for i in range(0, 3):
-            say("Full battery")
+            say("Your battery is full, unplug the charger")
         sleep_time = 60
+    
+    # Logger
+    print(f"Running...")
+    print(f"Battery: {battery.percent}%")
+    print(f"{getDateTime()}\n")
 
-    print(f"Running... \nBattery: {battery.percent}%\n")
     time.sleep(sleep_time)
 
 
